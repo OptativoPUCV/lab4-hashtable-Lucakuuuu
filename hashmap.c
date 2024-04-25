@@ -136,8 +136,8 @@ Pair * nextMap(HashMap * map)
     {
       if(is_equal(map->buckets[map->current]->key, posicion->key) == 1)
       {
-        map->current++;
-        map->current = map->current % map->capacity;
+        //map->current++;
+        map->current = (map->current+1) % map->capacity;
         return map->buckets[map->current];
       }
       else
