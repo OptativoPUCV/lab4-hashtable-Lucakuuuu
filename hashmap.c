@@ -148,8 +148,6 @@ Pair * nextMap(HashMap * map)
       }
     }
   */
-  Pair * nextMap(HashMap * map)  
-  {
     Pair *posicion = firstMap(map);
     if(posicion == NULL) return NULL;  
     while(map->buckets[map->current] != NULL)

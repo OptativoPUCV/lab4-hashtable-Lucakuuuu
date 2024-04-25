@@ -315,3 +315,15 @@ hashmap.c:151:10: error: ‘nextMap’ defined but not used [-Werror=unused-func
 cc1: all warnings being treated as errors
 Compilation failed
 22879eb
+Thu 25 Apr 2024 10:18:03 PM UTC: 
+ hashmap.c | 2 --
+ 1 file changed, 2 deletions(-)
+In file included from test.c:4:
+hashmap.c:177:3: error: expected identifier or ‘(’ before ‘return’
+  177 |   return NULL;
+      |   ^~~~~~
+hashmap.c:178:1: error: expected identifier or ‘(’ before ‘}’ token
+  178 | }
+      | ^
+Compilation failed
+27f5aa2
