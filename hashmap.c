@@ -25,7 +25,7 @@ Pair * createPair( char * key,  void * value) {
 
 long hash( char * key, long capacity) {
     unsigned long hash = 0;
-     char * ptr;
+    char *ptr;
     for (ptr = key; *ptr != '\0'; ptr++) {
         hash += hash*32 + tolower(*ptr);
     }
@@ -41,8 +41,18 @@ int is_equal(void* key1, void* key2){
 
 void insertMap(HashMap * map, char * key, void * value) 
 {
-  
-
+  if(map==NULL) return;
+  if(map->size==map->capacity enlarge(map);
+  long posicion= hash(key,map->capacity);
+  while(map->buckets[posicion]!=NULL && map->buckets[posicion]->key!=NULL)
+    {
+      if(is_equal(map->buckets[posicion]->key, key) == 1)
+      {
+        map->buckets[posicion]->value=value;
+        return;
+      }
+    }
+    
 }
 
 void enlarge(HashMap * map) {
@@ -59,7 +69,6 @@ HashMap * createMap(long capacity)
   mapa->size = 0;
   mapa->capacity = capacity;
   mapa->current = -1;
-  
   return mapa;
 }
 

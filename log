@@ -14,3 +14,17 @@ Thu 25 Apr 2024 09:26:27 PM UTC:
  tests:  1|5
 total_score: 10/70
 80f35c9
+Thu 25 Apr 2024 09:31:45 PM UTC: 
+ hashmap.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:45:30: error: expected ‘)’ before ‘enlarge’
+   45 |   if(map->size==map->capacity enlarge(map);
+      |     ~                        ^~~~~~~~
+      |                              )
+hashmap.c:56:1: error: expected expression before ‘}’ token
+   56 | }
+      | ^
+Compilation failed
+f3bd1d1
