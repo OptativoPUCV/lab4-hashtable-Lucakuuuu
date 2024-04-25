@@ -130,6 +130,7 @@ Pair * firstMap(HashMap * map)
 
 Pair * nextMap(HashMap * map) 
 {
+  /*
   Pair *posicion = firstMap(map);
   if(posicion == NULL) return NULL;  
   while(map->buckets[map->current] != NULL)
@@ -146,5 +147,34 @@ Pair * nextMap(HashMap * map)
         map->current = map->current % map->capacity;
       }
     }
+  */
+  Pair * nextMap(HashMap * map)  
+  {
+    Pair *posicion = firstMap(map);
+    if(posicion == NULL) return NULL;  
+    while(map->buckets[map->current] != NULL)
+      {
+        // If the keys are equal, we've found the next valid pair
+        if(is_equal(map->buckets[map->current]->key, posicion->key) == 1)
+        {
+          map->current++;
+          map->current = map->current % map->capacity;
+          return map->buckets[map->current];
+        }
+        else
+        {
+          // Keep iterating until we find the next valid pair
+          int original_current = map->current;
+          do {
+              map->current = (map->current + 1) % map->capacity;
+          } while (map->buckets[map->current] == NULL || map->buckets[map->current]->key == NULL);
+
+          if (map->current == original_current) {
+              return NULL; // No more valid pairs found
+          }
+        }
+      }
+    return NULL;
+  }
   return NULL;
 }
