@@ -131,7 +131,19 @@ Pair * firstMap(HashMap * map)
 Pair * nextMap(HashMap * map) 
 {
   Pair *posicion = firstMap(map);
-  return map->buckets[posicion++];
+  if(posicion == NULL) return NULL;  
+  while(posicion != NULL)
+    {
+      if(posicion->key != NULL)
+      {
+        map->current = hash(posicion->key,map->capacity);
+        return posicion;
+      }
+      else
+      {
+        posicion = firstMap(map);
+      }
+    }
   
-  //return NULL;
+  return NULL;
 }
