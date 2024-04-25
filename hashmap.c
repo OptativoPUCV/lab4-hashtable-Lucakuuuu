@@ -134,14 +134,16 @@ Pair * nextMap(HashMap * map)
   if(posicion == NULL) return NULL;  
   while(posicion != NULL)
     {
-      if(posicion->key != NULL)
+      if(is_equal(map->buckets[map->current]->key, posicion->key) == 1)
       {
-        map->current = hash(posicion->key,map->capacity);
-        return posicion;
+        map->current++;
+        map->current = map->current % map->capacity;
+        return map->buckets[map->current];
       }
       else
       {
-        posicion = firstMap(map);
+        map->current++;
+        map->current = map->current % map->capacity;
       }
     }
   
