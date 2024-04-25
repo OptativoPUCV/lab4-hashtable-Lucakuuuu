@@ -143,4 +143,5 @@ Pair * nextMap(HashMap * map)
     }
   /*map->current++;
   return map->buckets[map->current];*/
+  return NULL;
 }
