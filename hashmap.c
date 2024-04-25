@@ -124,13 +124,22 @@ Pair * firstMap(HashMap * map)
         map->current++;
         map->current = map->current % map->capacity;
       }
-        //map->current--;
     }
   return NULL;
 }
 
 Pair * nextMap(HashMap * map) 
 {
-  
+  if(map == NULL || map->buckets == NULL) return NULL;
+  while(map->current != -1)
+    {
+      if(map->buckets[map->current]!=NULL && map->buckets[map->current]->key!=NULL)
+        return map->buckets[map->current];
+      else
+      {
+        map->current++;
+        map->current = map->current % map->capacity;
+      }
+    }
   return NULL;
 }
