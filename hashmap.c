@@ -91,7 +91,6 @@ Pair * searchMap(HashMap * map,  char * key)
       }
       else
       {
-        map->buckets[posicion]->value=value;
       posicion++;
       posicion = posicion % map->capacity;
       }
