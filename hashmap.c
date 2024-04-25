@@ -135,7 +135,7 @@ Pair * nextMap(HashMap * map)
     {
       if(map->buckets[posicion]!=NULL && map->buckets[posicion]->key!=NULL) 
         return map->buckets[posicion]->value;
-      posicion = (posicion + 1) / map->capacity;
+      posicion = (posicion + 1) % map->capacity;
     }
   return NULL;
 }
