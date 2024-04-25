@@ -121,7 +121,7 @@ Pair * firstMap(HashMap * map)
         return map->buckets[map->current];
       else
       {
-        map->current--;
+        map->current++;
         map->current = map->current % map->capacity;
       }
         //map->current--;
