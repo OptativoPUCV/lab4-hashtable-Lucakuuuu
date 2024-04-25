@@ -58,6 +58,7 @@ HashMap * createMap(long capacity)
   mapa->buckets = (Pair **) calloc(capacity, sizeof(Pair *));
   mapa->size = 0;
   mapa->capacity = capacity;
+  mapa->current = -1;
   
   return mapa;
 }
