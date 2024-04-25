@@ -131,22 +131,7 @@ Pair * firstMap(HashMap * map)
 Pair * nextMap(HashMap * map) 
 {
   void *posicion = firstMap(map);
-  if(posicion == NULL) return NULL;
-  while(posicion != NULL)
-    {
-      if(posicion == NULL) return NULL;
-      if(map->buckets[map->current]!=NULL && map->buckets[map->current]->key!=NULL)
-      {
-        map->current++;
-        map->current = map->current % map->capacity;
-        return map->buckets[map->current];
-      }
-      else
-      {
-        map->current++;
-        map->current = map->current % map->capacity;
-      }
-    }
+  return map->buckets[map->current++];
   
-  return NULL;
+  //return NULL;
 }

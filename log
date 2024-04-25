@@ -250,3 +250,14 @@ Thu 25 Apr 2024 10:05:53 PM UTC:
  tests:  13|2
 total_score: 50/70
 abed9a9
+Thu 25 Apr 2024 10:08:49 PM UTC: 
+ hashmap.c | 19 ++-----------------
+ 1 file changed, 2 insertions(+), 17 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:133:9: error: unused variable ‘posicion’ [-Werror=unused-variable]
+  133 |   void *posicion = firstMap(map);
+      |         ^~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+4e8efe0
