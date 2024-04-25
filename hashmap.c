@@ -134,7 +134,7 @@ Pair * nextMap(HashMap * map)
   while(posicion < map->capacity)
     {
       if(map->buckets[posicion]!=NULL && map->buckets[posicion]->key!=NULL) 
-        return map->buckets[posicion];
+        return map->buckets[posicion]->value;
       posicion = (posicion + 1) / map->capacity;
     }
   return NULL;
