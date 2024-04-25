@@ -129,3 +129,17 @@ Thu 25 Apr 2024 09:41:40 PM UTC:
  tests:  8|3
 total_score: 40/70
 b394301
+Thu 25 Apr 2024 09:44:03 PM UTC: 
+ hashmap.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘eraseMap’:
+hashmap.c:77:26: error: ‘return’ with a value, in function returning void [-Werror=return-type]
+   77 |   if(map == NULL) return NULL;
+      |                          ^~~~
+hashmap.c:75:6: note: declared here
+   75 | void eraseMap(HashMap * map,  char * key)
+      |      ^~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+b9e09aa
