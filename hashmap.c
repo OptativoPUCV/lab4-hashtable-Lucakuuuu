@@ -130,8 +130,8 @@ Pair * firstMap(HashMap * map)
 
 Pair * nextMap(HashMap * map) 
 {
-  void *posicion = firstMap(map);
-  return map->buckets[map->current++];
+  Pair *posicion = firstMap(map);
+  return map->buckets[posicion++];
   
   //return NULL;
 }

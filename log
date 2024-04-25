@@ -261,3 +261,17 @@ hashmap.c:133:9: error: unused variable ‘posicion’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 4e8efe0
+Thu 25 Apr 2024 10:09:20 PM UTC: 
+ hashmap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:134:22: error: array subscript is not an integer
+  134 |   return map->buckets[posicion++];
+      |                      ^
+hashmap.c:137:1: error: control reaches end of non-void function [-Werror=return-type]
+  137 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+e958f2c
