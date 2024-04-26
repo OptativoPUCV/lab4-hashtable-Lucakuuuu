@@ -152,8 +152,6 @@ Pair *nextMap(HashMap * map)
       map->current = sgtePosicion;
       return map->buckets[sgtePosicion];
     }
-    else return NULL;
     sgtePosicion++;
   }
-  return NULL;
 }
