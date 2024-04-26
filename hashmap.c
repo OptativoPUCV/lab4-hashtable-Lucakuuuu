@@ -59,18 +59,18 @@ void enlarge(HashMap * map)
 {
   enlarge_called = 1; //no borrar (testing purposes)
   if (map == NULL || map->buckets == NULL) return;
-  Pair **old_buckets = map->buckets;
-  long old_capacity = map->capacity;
+  Pair **original = map->buckets;
+  long capacidadOriginal = map->capacity;
   map->capacity *= 2;
   map->buckets = (Pair **)calloc(map->capacity, sizeof(Pair *));
   map->size = 0;
-  for (long i = 0; i < old_capacity; i++)
-      if (old_buckets[i] != NULL && old_buckets[i]->key != NULL)
+  for (long i = 0; i < capacidadOriginal; i++)
+      if (original[i] != NULL && original[i]->key != NULL)
       {
-        insertMap(map, old_buckets[i]->key, old_buckets[i]->value);
-        free( old_buckets[i]);
+        insertMap(map, original[i]->key, original[i]->value);
+        free( original[i]);
       }
-  free(old_buckets);
+  free(original);
 }
 
 
@@ -142,17 +142,16 @@ Pair * firstMap(HashMap * map)
 
 Pair *nextMap(HashMap * map) 
 {
-  if (map == NULL || map->buckets == NULL) return NULL;
   long sgtePosicion = map->current + 1;
-  while (sgtePosicion != map->current) 
+  while (sgtePosicion != map->current)
   {
-      if (sgtePosicion >= map->capacity) sgtePosicion = 0;
-      if (map->buckets[sgtePosicion] != NULL && map->buckets[sgtePosicion]->key != NULL) 
-      {
-          map->current = sgtePosicion;
-          return map->buckets[sgtePosicion];
-      }
-      sgtePosicion++;
+    if (sgtePosicion >= map->capacity) sgtePosicion = 0;
+    if (map->buckets[sgtePosicion] != NULL && map->buckets[sgtePosicion]->key != NULL) 
+    {
+      map->current = sgtePosicion;
+      return map->buckets[sgtePosicion];
+    }
+    sgtePosicion++;
   }
   return NULL;
 }
