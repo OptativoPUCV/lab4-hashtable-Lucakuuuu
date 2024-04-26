@@ -154,4 +154,5 @@ Pair *nextMap(HashMap * map)
     }
     sgtePosicion++;
   }
+  return NULL;
 }
