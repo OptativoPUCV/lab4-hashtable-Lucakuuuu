@@ -131,19 +131,16 @@ Pair * firstMap(HashMap * map)
 Pair * nextMap(HashMap * map) 
 {
   if (map == NULL || map->buckets == NULL) return NULL;
-
-  long nextIndex = map->current + 1;
-  while (nextIndex != map->current) {
-      if (nextIndex >= map->capacity)
-          nextIndex = 0;
-
-      if (map->buckets[nextIndex] != NULL && map->buckets[nextIndex]->key != NULL) {
-          map->current = nextIndex;
-          return map->buckets[nextIndex];
+  long sgtePosicion = map->current + 1;
+  while (sgtePosicion != map->current) 
+  {
+      if (sgtePosicion >= map->capacity) sgtePosicion = 0;
+      if (map->buckets[sgtePosicion] != NULL && map->buckets[sgtePosicion]->key != NULL) 
+      {
+          map->current = sgtePosicion;
+          return map->buckets[sgtePosicion];
       }
-
-      nextIndex++;
+      sgtePosicion++;
   }
-
   return NULL;
 }
