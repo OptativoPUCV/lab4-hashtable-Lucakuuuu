@@ -128,19 +128,28 @@ Pair * firstMap(HashMap * map)
   return NULL;
 }
 
-Pair * nextMap(HashMap * map) 
-{
-  if (map == NULL || map->buckets == NULL) return NULL;
-  long sgtePosicion = map->current + 1;
-  while (sgtePosicion != map->current) 
-  {
-      if (sgtePosicion >= map->capacity) sgtePosicion = 0;
-      if (map->buckets[sgtePosicion] != NULL && map->buckets[sgtePosicion]->key != NULL) 
-      {
-          map->current = sgtePosicion;
-          return map->buckets[sgtePosicion];
-      }
-      sgtePosicion++;
-  }
-  return NULL;
+Pair * nextMap(HashMap * map) {
+    if (map == NULL || map->buckets == NULL) return NULL;
+
+    long sgtePosicion = map->current + 1;
+    long initialIndex = sgtePosicion; // Guardamos el índice inicial para detectar un bucle completo
+
+    while (sgtePosicion != map->current) {
+        if (sgtePosicion >= map->capacity)
+            sgtePosicion = 0;
+
+        if (map->buckets[sgtePosicion] != NULL && map->buckets[sgtePosicion]->key != NULL) {
+            map->current = sgtePosicion;
+            return map->buckets[sgtePosicion];
+        }
+
+        sgtePosicion++;
+
+        // Si hemos recorrido todo el arreglo y volvimos al índice inicial, salimos del bucle
+        if (sgtePosicion == initialIndex)
+            break;
+    }
+
+    return NULL;
 }
+
