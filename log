@@ -473,3 +473,14 @@ hashmap.c:148:18: error: invalid type argument of ‘->’ (have ‘long int’)
       |                  ^~
 Compilation failed
 004d63d
+Fri 26 Apr 2024 01:59:31 AM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘nextMap’:
+hashmap.c:146:19: error: comparison between pointer and integer [-Werror]
+  146 |   if(map->current == NULL) return NULL;
+      |                   ^~
+cc1: all warnings being treated as errors
+Compilation failed
+30f8585
