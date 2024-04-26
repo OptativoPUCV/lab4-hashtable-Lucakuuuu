@@ -142,6 +142,7 @@ Pair * firstMap(HashMap * map)
 
 Pair *nextMap(HashMap * map) 
 {
+  if (map == NULL || map->buckets == NULL) return NULL;
   long sgtePosicion = map->current + 1;
   while (sgtePosicion != map->current)
   {
@@ -151,6 +152,7 @@ Pair *nextMap(HashMap * map)
       map->current = sgtePosicion;
       return map->buckets[sgtePosicion];
     }
+    else return NULL;
     sgtePosicion++;
   }
   return NULL;
