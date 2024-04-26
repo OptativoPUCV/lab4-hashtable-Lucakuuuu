@@ -141,6 +141,25 @@ Pair * firstMap(HashMap * map)
 }
 
 Pair *nextMap(HashMap * map)
+{
+  if(map == NULL || map->buckets == NULL) return NULL;
+  map->current++;
+  map->current = map->current % map->capacity;
+  while(map->current != -1)
+    {
+      if(map->buckets[map->current]!=NULL && map->buckets[map->current]->key!=NULL)
+      {
+        return map->buckets[map->current];
+      }
+      else
+      {
+        map->current++;
+        map->current = map->current % map->capacity;
+        
+      }
+    }
+  return NULL;
+}
 /*
 {
   if (map == NULL || map->buckets == NULL) return NULL;
@@ -159,26 +178,4 @@ Pair *nextMap(HashMap * map)
   }
 }
 */
-{
-    if (map == NULL || map->buckets == NULL) return NULL;
-
-    long nextIndex = map->current + 1;
-    long initialIndex = nextIndex; // Guardamos el índice inicial para detectar un bucle completo
-
-    while (1) {
-        if (nextIndex >= map->capacity)
-            nextIndex = 0;
-
-        if (map->buckets[nextIndex] != NULL && map->buckets[nextIndex]->key != NULL) {
-            map->current = nextIndex;
-            return map->buckets[nextIndex];
-        }
-
-        nextIndex++;
-
-        // Si hemos recorrido todo el arreglo y volvimos al índice inicial, retornamos NULL
-        if (nextIndex == initialIndex)
-            return NULL;
-    }
-}
 
