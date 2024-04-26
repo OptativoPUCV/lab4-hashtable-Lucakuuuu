@@ -140,7 +140,8 @@ Pair * firstMap(HashMap * map)
   return NULL;
 }
 
-Pair *nextMap(HashMap * map) 
+Pair *nextMap(HashMap * map)
+/*
 {
   if (map == NULL || map->current == -1) return NULL;
   for (long i = map->current + 1; i < map->capacity; i++) 
@@ -152,7 +153,7 @@ Pair *nextMap(HashMap * map)
   map->current = -1;
   return NULL;
 }
-/*
+*/
 {
   if(map == NULL || map->buckets == NULL) return NULL;
   map->current++;
