@@ -57,9 +57,31 @@ void insertMap(HashMap * map, char * key, void * value)
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
+      if (map == NULL || map->buckets == NULL) return;
 
+      // Guardamos el arreglo original y su capacidad
+      Pair **old_buckets = map->buckets;
+      long old_capacity = map->capacity;
 
-}
+      // Duplicamos la capacidad
+      map->capacity *= 2;
+
+      // Creamos un nuevo arreglo para los buckets con la nueva capacidad
+      map->buckets = (Pair **)calloc(map->capacity, sizeof(Pair *));
+
+      // Reinicializamos size a 0
+      map->size = 0;
+
+      // Insertamos los elementos del arreglo original en el nuevo mapa
+      for (long i = 0; i < old_capacity; i++) {
+          if (old_buckets[i] != NULL && old_buckets[i]->key != NULL) {
+              insertMap(map, old_buckets[i]->key, old_buckets[i]->value);
+          }
+      }
+
+      // Liberamos la memoria del arreglo original
+      free(old_buckets);
+  }
 
 
 HashMap * createMap(long capacity) 
@@ -128,28 +150,19 @@ Pair * firstMap(HashMap * map)
   return NULL;
 }
 
-Pair * nextMap(HashMap * map) {
-    if (map == NULL || map->buckets == NULL) return NULL;
-
-    long sgtePosicion = map->current + 1;
-    long initialIndex = sgtePosicion; // Guardamos el índice inicial para detectar un bucle completo
-
-    while (sgtePosicion != map->current) {
-        if (sgtePosicion >= map->capacity)
-            sgtePosicion = 0;
-
-        if (map->buckets[sgtePosicion] != NULL && map->buckets[sgtePosicion]->key != NULL) {
-            map->current = sgtePosicion;
-            return map->buckets[sgtePosicion];
-        }
-
-        sgtePosicion++;
-
-        // Si hemos recorrido todo el arreglo y volvimos al índice inicial, salimos del bucle
-        if (sgtePosicion == initialIndex)
-            break;
-    }
-
-    return NULL;
+Pair *nextMap(HashMap * map) 
+{
+  if (map == NULL || map->buckets == NULL) return NULL;
+  long sgtePosicion = map->current + 1;
+  while (sgtePosicion != map->current) 
+  {
+      if (sgtePosicion >= map->capacity) sgtePosicion = 0;
+      if (map->buckets[sgtePosicion] != NULL && map->buckets[sgtePosicion]->key != NULL) 
+      {
+          map->current = sgtePosicion;
+          return map->buckets[sgtePosicion];
+      }
+      sgtePosicion++;
+  }
+  return NULL;
 }
-
