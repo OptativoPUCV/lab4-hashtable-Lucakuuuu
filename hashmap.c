@@ -170,6 +170,7 @@ Pair *nextMap(HashMap * map)
     }
   return NULL;
 }
+/*
 {
   if (map == NULL || map->buckets == NULL) return NULL;
   long sgtePosicion = map->current + 1;

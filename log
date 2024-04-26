@@ -744,3 +744,9 @@ hashmap.c:19:40: note: expected ‘void *’ but argument is of type ‘int’
 cc1: all warnings being treated as errors
 Compilation failed
 1af7fa4
+Fri 26 Apr 2024 02:20:33 AM UTC: 
+ hashmap.c | 1 +
+ 1 file changed, 1 insertion(+)
+ tests:  16|1
+total_score: 60/70
+cf63f27
