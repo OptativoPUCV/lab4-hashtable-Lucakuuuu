@@ -144,7 +144,8 @@ Pair *nextMap(HashMap * map)
 {
   if (map == NULL || map->buckets == NULL) return NULL;
   long sgtePosicion = map->current + 1;
-  while (sgtePosicion != map->current)
+  long posicionOriginal = map->current;
+  while (true)
   {
     if (sgtePosicion >= map->capacity) sgtePosicion = 0;
     if (map->buckets[sgtePosicion] != NULL && map->buckets[sgtePosicion]->key != NULL) 
@@ -153,6 +154,6 @@ Pair *nextMap(HashMap * map)
       return map->buckets[sgtePosicion];
     }
     sgtePosicion++;
+    if(map->current == posicionOriginal) return NULL;
   }
-  return NULL;
 }
